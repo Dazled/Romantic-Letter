@@ -68,9 +68,12 @@ body {
 /* =====================
    HEART SEAL
 ===================== */
+/* =====================
+   HEART SEAL (FIXED)
+===================== */
 .heart {
   position: absolute;
-  top: 46%;
+  top: 50%; /* moved down from 46% */
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg) scale(1);
   width: 28px;
@@ -78,6 +81,7 @@ body {
   background: white;
   border-radius: 6px;
   z-index: 5;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.18); /* visual separation */
   transition: opacity 1s ease, transform 1s ease;
 }
 
@@ -224,7 +228,7 @@ body {
 
 @media (max-width: 480px) {
   .envelope {
-    aspect-ratio: 20 / 9;   /* 👈 MOBILE SHORTER ONLY */
+    aspect-ratio: 20 / 8.5;   /* 👈 MOBILE SHORTER ONLY */
     width: 96vw;
   }
    .flap {
