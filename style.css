@@ -52,11 +52,15 @@ body {
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   font-size: 48px;
   color: white;
   z-index: 5;
-  transition: opacity 0.5s ease;
+
+  /* Smooth fade */
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 /* Letter */
@@ -103,6 +107,8 @@ body {
 
 .envelope.open .heart {
   opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  transition-delay: 0.3s;
 }
 
 /* Hint text */
