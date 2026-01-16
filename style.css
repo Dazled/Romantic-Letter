@@ -224,7 +224,7 @@ body {
 
 @media (max-width: 480px) {
   .envelope {
-    aspect-ratio: 21 / 9;   /* 👈 MOBILE SHORTER ONLY */
-    width: 94vw;
+    aspect-ratio: 24 / 9;   /* 👈 MOBILE SHORTER ONLY */
+    width: 96vw;
   }
 }
