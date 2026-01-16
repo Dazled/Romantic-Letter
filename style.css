@@ -224,7 +224,10 @@ body {
 
 @media (max-width: 480px) {
   .envelope {
-    aspect-ratio: 24 / 9;   /* 👈 MOBILE SHORTER ONLY */
+    aspect-ratio: 20 / 8;   /* 👈 MOBILE SHORTER ONLY */
     width: 96vw;
+  }
+   .flap {
+    height: 52%;
   }
 }
