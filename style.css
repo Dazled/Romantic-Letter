@@ -1,3 +1,6 @@
+/* =====================
+   GLOBAL RESET
+===================== */
 * {
   box-sizing: border-box;
 }
@@ -13,66 +16,103 @@ body {
   overflow: hidden;
 }
 
-/* Container */
+/* =====================
+   CONTAINER
+===================== */
 .container {
   text-align: center;
-  position: relative;
 }
 
-/* Envelope */
+/* =====================
+   ENVELOPE (MAIN)
+===================== */
 .envelope {
   position: relative;
-  width: 90vw;
-  max-width: 650px;
-  height: 50vh;
-  max-height: 420px;
+  width: min(90vw, 460px);
+  aspect-ratio: 16 / 9;          /* 👈 WIDER THAN TALL */
   background: #e5989b;
-  border-radius: 20px;
+  border-radius: 32px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.22);
+  transition: transform 0.6s ease, opacity 0.8s ease;
 }
 
-/* Flap */
+/* Slight hover lift (desktop only) */
+@media (hover: hover) {
+  .envelope:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* =====================
+   FLAP
+===================== */
 .flap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 60%;
   background: #d87093;
-  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 70%
+  );
   transform-origin: top;
-  transition: transform 1s ease;
+  transition: transform 0.9s ease;
   z-index: 4;
 }
 
-/* Heart seal */
+/* =====================
+   HEART SEAL
+===================== */
 .heart {
   position: absolute;
-  top: 45%;
+  top: 44%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  font-size: 48px;
-  color: white;
+  transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+  width: 30px;
+  height: 26px;
+  background: white;
+  border-radius: 6px;
   z-index: 5;
-
-  /* Smooth fade */
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Letter */
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -15px;
+  left: 0;
+}
+
+.heart::after {
+  left: 15px;
+  top: 0;
+}
+
+/* =====================
+   LETTER
+===================== */
 .letter {
   position: absolute;
   bottom: -140%;
   left: 5%;
   width: 90%;
-  height: 80%;
+  height: 85%;
   background: #fffaf0;
-  border-radius: 16px;
-  padding: 28px;
+  border-radius: 18px;
+  padding: 26px;
   text-align: center;
   overflow-y: auto;
   transition: bottom 1s ease;
@@ -81,48 +121,54 @@ body {
 
 .letter h2 {
   margin-top: 0;
+  font-size: 24px;
   color: #b5838d;
-  font-size: 28px;
 }
 
 .letter p {
+  font-size: 15px;
   color: #444;
-  font-size: 16px;
   line-height: 1.6;
 }
 
 .signature {
-  margin-top: 20px;
+  margin-top: 18px;
   font-style: italic;
 }
 
-/* Open state */
+/* =====================
+   OPEN STATE
+===================== */
 .envelope.open .flap {
   transform: rotateX(180deg);
 }
 
 .envelope.open .letter {
-  bottom: 10px;
+  bottom: 8px;
 }
 
 .envelope.open .heart {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.6);
-  transition-delay: 0.3s;
+  transform: translate(-50%, -50%) rotate(-45deg) scale(0.6);
+  transition-delay: 0.2s;
 }
 
-/* Hint text */
+/* =====================
+   HINT TEXT
+===================== */
 .hint {
-  margin-top: 18px;
-  color: #6d6875;
+  margin-top: 16px;
   font-size: 14px;
+  color: #6d6875;
 }
 
-/* Floating hearts */
+/* =====================
+   FLOATING HEARTS
+===================== */
 .floating-heart {
   position: absolute;
   bottom: -20px;
-  font-size: 20px;
+  font-size: 18px;
   color: #ff6b81;
   animation: floatUp 6s linear forwards;
   pointer-events: none;
@@ -134,12 +180,14 @@ body {
     opacity: 1;
   }
   100% {
-    transform: translateY(-110vh) scale(1.8);
+    transform: translateY(-110vh) scale(1.6);
     opacity: 0;
   }
 }
 
-/* Shake effect */
+/* =====================
+   SHAKE (WRONG PASSWORD)
+===================== */
 .shake {
   animation: shake 0.4s;
 }
@@ -152,43 +200,24 @@ body {
   100% { transform: translateX(0); }
 }
 
-/* ===== Mobile Portrait Fix ===== */
-@media (max-width: 480px) and (orientation: portrait) {
-
+/* =====================
+   MOBILE POLISH
+===================== */
+@media (max-width: 480px) {
   .envelope {
     width: 92vw;
-    height: 38vh;        /* less tall */
-    max-height: 320px;
-    border-radius: 18px;
-  }
-
-  .flap {
-    clip-path: polygon(0 0, 100% 0, 50% 48%);
-  }
-
-  .heart {
-    font-size: 40px;
-    top: 42%;
+    border-radius: 26px;
   }
 
   .letter {
-    height: 85%;
     padding: 20px;
-    font-size: 15px;
   }
 
   .letter h2 {
     font-size: 22px;
   }
 
-  .hint {
-    font-size: 13px;
-    margin-top: 12px;
-  }
-}
-
-@media (max-width: 480px) and (orientation: portrait) {
-  .envelope.open {
-    opacity: 0.95;
+  .letter p {
+    font-size: 14px;
   }
 }
