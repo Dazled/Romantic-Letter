@@ -28,16 +28,16 @@ body {
 ===================== */
 .envelope {
   position: relative;
-  width: min(92vw, 480px);
-  aspect-ratio: 16 / 9;   /* 👈 DESKTOP NORMAL */
+  width: 90vw;
+  max-width: 650px;
+  height: 50vh;
+  max-height: 420px;
   background: #e5989b;
-  border-radius: 28px;
+  border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.22);
-  transition: transform 0.6s ease, opacity 0.8s ease;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
 }
-
 /* Hover lift (desktop only) */
 @media (hover: hover) {
   .envelope:hover {
@@ -224,7 +224,7 @@ body {
 
 @media (max-width: 480px) {
   .envelope {
-    aspect-ratio: 20 / 8;   /* 👈 MOBILE SHORTER ONLY */
+    aspect-ratio: 20 / 9;   /* 👈 MOBILE SHORTER ONLY */
     width: 96vw;
   }
    .flap {
