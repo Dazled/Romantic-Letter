@@ -29,7 +29,7 @@ body {
 .envelope {
   position: relative;
   width: min(92vw, 480px);
-  aspect-ratio: 21 / 9;      /* 👈 25% SHORTER */
+  aspect-ratio: 16 / 9;   /* 👈 DESKTOP NORMAL */
   background: #e5989b;
   border-radius: 28px;
   cursor: pointer;
@@ -219,5 +219,12 @@ body {
 
   .letter p {
     font-size: 13.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .envelope {
+    aspect-ratio: 21 / 9;   /* 👈 MOBILE SHORTER ONLY */
+    width: 94vw;
   }
 }
