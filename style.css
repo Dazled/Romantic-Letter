@@ -152,3 +152,43 @@ body {
   100% { transform: translateX(0); }
 }
 
+/* ===== Mobile Portrait Fix ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+
+  .envelope {
+    width: 92vw;
+    height: 38vh;        /* less tall */
+    max-height: 320px;
+    border-radius: 18px;
+  }
+
+  .flap {
+    clip-path: polygon(0 0, 100% 0, 50% 48%);
+  }
+
+  .heart {
+    font-size: 40px;
+    top: 42%;
+  }
+
+  .letter {
+    height: 85%;
+    padding: 20px;
+    font-size: 15px;
+  }
+
+  .letter h2 {
+    font-size: 22px;
+  }
+
+  .hint {
+    font-size: 13px;
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) and (orientation: portrait) {
+  .envelope.open {
+    opacity: 0.95;
+  }
+}
